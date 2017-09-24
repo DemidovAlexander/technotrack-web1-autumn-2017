@@ -2,35 +2,38 @@
 import socket
 import os
 
-default_response = '''HTTP/1.1 404 Not found\r\n\r\n'''
 
-
-def write_text_response(text):
-    return '''HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: ''' + str(len(text)) \
+def write_text_response(code, text):
+    return '''HTTP/1.1 ''' + str(code) + '''\r\nContent-Type: text/html\r\nContent-Length: ''' + str(len(text)) \
            + '''\r\n\r\n''' + text + '''\r\n\r\n'''
 
 
 def make_index_response(user_agent):
-    return write_text_response('''Hello mister!\nYou are: ''' + user_agent)
+    return write_text_response('''200 OK''', '''Hello mister!\nYou are: ''' + user_agent)
 
 
 def make_test_response(request):
-    return write_text_response(request)
+    return write_text_response('''200 OK''', request)
 
 
 def make_media_response(filename):
+    listdir = os.listdir(os.path.join('..', 'files'))
+
     if filename == '':
-        return write_text_response(' '.join(os.listdir(os.path.join('..', 'files'))))
+        return write_text_response('''200 OK''', ' '.join(listdir))
     else:
-        with open(os.path.join('..', 'files', filename), 'r') as current_file:
-            return write_text_response(current_file.read())
+        if filename not in listdir:
+            return write_text_response('''404 Not found''', 'File not found')
+        else:
+            with open(os.path.join('..', 'files', filename), 'r') as current_file:
+                return write_text_response('''200 OK''', current_file.read())
 
 
 # form our http response for the request string
 def get_response(request):
     request = request.decode()
     if not request.startswith('GET '):
-        return default_response.encode()
+        return write_text_response('''404 Not found''', 'Page not found').encode()
 
     uri = request[4:request.find(' ', 4)]
 
@@ -43,7 +46,7 @@ def get_response(request):
         filename = uri[7:]
         return make_media_response(filename).encode()
     else:
-        return default_response.encode()
+        return write_text_response('''404 Not found''', 'Page not found').encode()
 
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
