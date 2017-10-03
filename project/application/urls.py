@@ -45,29 +45,29 @@ from core.views import reference
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/$', index),
+    url(r'^$', index),
     url(r'^profile/$', profile),
-    url(r'^user/(?P<user>\d+)/$', user),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/$', user),
 
-    url(r'^user/(?P<user>\d+)/personalities/$', personalities),
-    url(r'^user/(?P<user>\d+)/personalities/(?P<post_id>\d+)/$', personality),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/personalities/$', personalities),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/personalities/(?P<post_id>\d+)/$', personality),
 
-    url(r'^user/(?P<user>\d+)/music/$', music),
-    url(r'^user/(?P<user>\d+)/music/personalities/(?P<post_id>\d+)/$', music_personality),
-    url(r'^user/(?P<user>\d+)/music/items/(?P<post_id>\d+)/$', music_item),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/music/$', music),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/music/personalities/(?P<post_id>\d+)/$', music_personality),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/music/items/(?P<post_id>\d+)/$', music_item),
 
-    url(r'^user/(?P<user>\d+)/movies/$', movies),
-    url(r'^user/(?P<user>\d+)/movies/personalities/(?P<post_id>\d+)/$', movies_personality),
-    url(r'^user/(?P<user>\d+)/movies/items/(?P<post_id>\d+)/$', movies_item),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/movies/$', movies),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/movies/personalities/(?P<post_id>\d+)/$', movies_personality),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/movies/items/(?P<post_id>\d+)/$', movies_item),
 
-    url(r'^user/(?P<user>\d+)/books/$', books),
-    url(r'^user/(?P<user>\d+)/books/personalities/(?P<post_id>\d+)/$', books_personality),
-    url(r'^user/(?P<user>\d+)/books/items/(?P<post_id>\d+)/$', books_item),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/books/$', books),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/books/personalities/(?P<post_id>\d+)/$', books_personality),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/books/items/(?P<post_id>\d+)/$', books_item),
 
-    url(r'^user/(?P<user>\d+)/paintings/$', paintings),
-    url(r'^user/(?P<user>\d+)/paintings/personalities/(?P<post_id>\d+)/$', paintings_personality),
-    url(r'^user/(?P<user>\d+)/paintings/items/(?P<post_id>\d+)/$', paintings_item),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/paintings/$', paintings),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/paintings/personalities/(?P<post_id>\d+)/$', paintings_personality),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/paintings/items/(?P<post_id>\d+)/$', paintings_item),
 
-    url(r'^user/(?P<user>\d+)/references/$', references),
-    url(r'^user/(?P<user>\d+)/references/(?P<post_id>\d+)/$', reference),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/references/$', references),
+    url(r'^(?P<user>([a-zA-Z][a-zA-Z0-9-_\.]{1,20}))/references/(?P<post_id>\d+)/$', reference),
 ]
