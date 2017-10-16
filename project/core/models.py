@@ -1,14 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
-class Post(models.Model):
+class User(AbstractUser):
 
-	title = models.CharField(max_length=255)
-	text = models.TextField(default='')
-
-
-
-
-Post(title='111', text="sfefsrgsefefeffsef").save()
-Post.objects.all()
-
+    avatar = models.ImageField(upload_to='avatars', blank=True, null=True)
