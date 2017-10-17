@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>List of favourite personalities, music, movies, books and references for user {{ user }}</h1>
+{% endblock %}
+
+{% block menu %}<h1>Not main meny</h1>{% endblock %}
+
+
+
+{% extends "core/base.html" %}
+
+{% block title %}Список блогов{% endblock %}
+
+{% block content %}
+    {% for blog in object_list %}
+        <div>
+            <div><a href="{% url ">{{ blog.title }}</a></div>
+            <div>{{ blog.description }}</div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,3 +1,21 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Book, BookPersonality, Genre
+
+
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+
+    list_display = ('id', )
+
+
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+
+    list_display = ('id', )
+
+
+@admin.register(BookPersonality)
+class BookPersonalityAdmin(admin.ModelAdmin):
+
+    list_display = ('id', )

@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User
+from .models import User, AbstractPost, AbstractPersonalityPost, AbstractCategory
 
 
 class UserAdmin(BaseUserAdmin):
@@ -21,3 +21,21 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(User, UserAdmin)
+
+
+@admin.register(AbstractPost)
+class AbstractPostAdmin(admin.ModelAdmin):
+
+    list_display = ('id', )
+
+
+@admin.register(AbstractPersonalityPost)
+class AbstractPersonalityPostAdmin(admin.ModelAdmin):
+
+    list_display = ('id', )
+
+
+@admin.register(AbstractCategory)
+class AbstractCategoryAdmin(admin.ModelAdmin):
+
+    list_display = ('id', )
